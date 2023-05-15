@@ -3,7 +3,7 @@ import Benefits from "./benefits";
 import Footer from "./footer";
 import Header from "./header";
 import Highlighted from "./highlighted";
-import Feedback from "./feedback";
+import Feedbacks from "./feedbacks";
 
 export default function Landing() {
     return (
@@ -11,7 +11,7 @@ export default function Landing() {
             <Header />
             <Highlighted />
             <Benefits />
-            <Feedback />
+            <Feedbacks />
             <Footer />
         </Page>
     )
