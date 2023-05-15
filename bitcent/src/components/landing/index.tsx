@@ -7,7 +7,7 @@ import Feedbacks from "./feedbacks";
 
 export default function Landing() {
     return (
-        <Page>
+        <Page extern>
             <Header />
             <Highlighted />
             <Benefits />
