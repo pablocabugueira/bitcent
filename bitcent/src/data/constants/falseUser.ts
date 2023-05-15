@@ -1,5 +1,5 @@
-import Id from "../core/common/Id";
-import User from "../core/user/User";
+import Id from "@/logic/core/common/Id";
+import User from "@/logic/core/user/User";
 
 export default {
     id: Id.new(),
