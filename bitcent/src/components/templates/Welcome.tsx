@@ -1,10 +1,12 @@
-import falseUser from "@/data/constants/falseUser"
+import AutenticacaoContext from "@/data/contexts/AutenticacaoContext";
+import { useContext } from "react";
 
 export default function Welcome() {
+    const { usuario } = useContext(AutenticacaoContext)
     function renderName() {
         return (
             <span className="hidden sm:inline">
-                {falseUser?.name?.split(' ')[0]}
+                {usuario?.name?.split(' ')[0]}
             </span>
         )
     }

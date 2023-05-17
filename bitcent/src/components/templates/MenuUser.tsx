@@ -1,21 +1,23 @@
 import { Avatar, Menu } from "@mantine/core"
-import falseUser from "@/data/constants/falseUser"
 import Link from "next/link"
-import { IconArrowsRightLeft, IconUser } from "@tabler/icons-react"
+import { IconArrowsRightLeft, IconLogout, IconUser } from "@tabler/icons-react"
+import AutenticacaoContext from "@/data/contexts/AutenticacaoContext";
+import { useContext } from "react";
 
 export default function MenuUser() {
+    const { usuario, logout } = useContext(AutenticacaoContext)
     return (
         <Menu>
             <Menu.Target>
                 <div className='flex items-center gap-3 cursor-pointer'>
                     <div className='hidden md:flex flex-col select-none'>
-                        <span className='text-sm font-bold text-zinc-200'>{falseUser?.name}</span>
-                        <span className='text-xs text-zinc-400'>{falseUser?.email}</span>
+                        <span className='text-sm font-bold text-zinc-200'>{usuario?.name}</span>
+                        <span className='text-xs text-zinc-400'>{usuario?.email}</span>
                     </div>
                     <Avatar
                         size={40}
                         radius="xl"
-                        src={falseUser?.imageUrl ?? 'https://source.unsplash.com/random/100x100/?abstract'}
+                        src={usuario?.imageUrl ?? 'https://source.unsplash.com/random/100x100/?abstract'}
                     />
                 </div>
             </Menu.Target>
@@ -34,8 +36,8 @@ export default function MenuUser() {
                 <Menu.Divider />
                 <Menu.Item
                     color="red"
-                    //icon={<IconLogout size={14} />}
-                    //onClick={logout}
+                    icon={<IconLogout size={14} />}
+                    onClick={logout}
                 >Sair do Sistema</Menu.Item>
             </Menu.Dropdown>
         </Menu>
