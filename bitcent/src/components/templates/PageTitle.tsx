@@ -3,7 +3,7 @@ import React from "react"
 interface PageTitleProps {
     title: string
     icon?: any
-    subtitle?: string
+    subtitle?: any
     className?: string
 }
 
