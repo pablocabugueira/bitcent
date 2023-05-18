@@ -10,6 +10,7 @@ import useTransactions, { TipoExibicao } from "@/data/hooks/useTransactions";
 import { emptyTransaction } from "@/logic/core/finances/Transaction";
 import YearMonthField from "../templates/YearMonthField";
 import Grade from "./Grade";
+import Summary from "./Summary";
 
 export default function Finances() {
     const {
@@ -60,6 +61,7 @@ export default function Finances() {
         <Page>
             <Header />
             <Content className="gap-5">
+                <Summary transacoes={transactions} />
                 {(renderControlls())}
                 {transaction ? (
                     <Form
