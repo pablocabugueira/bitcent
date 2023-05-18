@@ -1,21 +1,21 @@
 import { useState, useContext, useEffect } from "react";
 import Transaction, { emptyTransaction } from "@/logic/core/finances/Transaction";
-import Id from "@/logic/core/common/Id";
 import AutenticacaoContext from "@/data/contexts/AutenticacaoContext";
 import servicos from "@/logic/core";
 
 export default function useTransactions() {
     const { usuario } = useContext(AutenticacaoContext)
+    const [data, setData] = useState<Date>(new Date())
     const [transactions, setTransactions] = useState<Transaction[]>([])
-    const [transaction, setTransaction] = useState<Transaction | null>(null)
+    const [transaction, setTransaction] = useState<Transaction | null>(null) 
 
     useEffect (() => {
         searchTransactions()
-    }, [])
+    }, [data])
     
     async function searchTransactions() {
         if(!usuario) return
-        const transactions = await servicos.transacao.search(usuario)
+        const transactions = await servicos.transacao.searchByMonth(usuario, data)
         setTransactions(transactions)
     }
 
@@ -34,10 +34,12 @@ export default function useTransactions() {
     }
 
     return {
+        data,
         transactions,
         transaction,
         saveTransaction,
         deleteTransaction,
-        select: setTransaction
+        select: setTransaction,
+        alterarData: setData
     }
 }
