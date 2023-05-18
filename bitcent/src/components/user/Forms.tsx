@@ -15,7 +15,7 @@ export default function Forms() {
     useEffect(() => {
         if(!usuario) return
         setData(usuario)
-    }, [usuario])
+    }, [usuario, setData])
 
     async function save() {
         if(!usuario) return

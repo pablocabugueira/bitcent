@@ -1,5 +1,5 @@
 import { IconBrandGithub, IconBrandInstagram, IconBrandLinkedin, IconBrandYoutube } from "@tabler/icons-react"
-import SocialMedia from "./socialMedia"
+import SocialMedia from "./SocialMedia"
 
 export default function SocialMedias() {
     return (

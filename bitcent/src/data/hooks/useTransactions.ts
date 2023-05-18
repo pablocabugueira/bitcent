@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 import Transaction, { emptyTransaction } from "@/logic/core/finances/Transaction";
 import AutenticacaoContext from "@/data/contexts/AutenticacaoContext";
 import servicos from "@/logic/core";
@@ -12,15 +12,15 @@ export default function useTransactions() {
     const [transactions, setTransactions] = useState<Transaction[]>([])
     const [transaction, setTransaction] = useState<Transaction | null>(null)
 
-    useEffect (() => {
-        searchTransactions()
-    }, [data])
-    
-    async function searchTransactions() {
+    const searchTransactions = useCallback(async function () {
         if(!usuario) return
         const transactions = await servicos.transacao.searchByMonth(usuario, data)
         setTransactions(transactions)
-    }
+    }, [usuario, data])
+
+    useEffect (() => {
+        searchTransactions()
+    }, [searchTransactions, data])
 
     async function saveTransaction(transaction: Transaction) {
         if(!usuario) return
