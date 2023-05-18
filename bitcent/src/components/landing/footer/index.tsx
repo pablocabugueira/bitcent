@@ -17,7 +17,7 @@ export default function Footer() {
             <div className="flex flex-col md:flex-row md:justify-between items-center mt-14">
                 <SocialMedias />
                 <p className="text-zinc-100 mt-7 md:mt-0 text-center">
-                    <span className="font-bold">Pablo Galvão Cabugueira</span> ® {new Date().getFullYear()} - Todos os direitos reservados
+                    <span className="font-black text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 via-indigo-500 to-cyan-500">Pablo Galvão Cabugueira</span> ® {new Date().getFullYear()} - Todos os direitos reservados
                 </p>
             </div>
         </Area>
