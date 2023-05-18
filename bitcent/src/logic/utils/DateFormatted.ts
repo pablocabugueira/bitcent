@@ -33,4 +33,15 @@ export default class DateFormatted {
     static ultimoDia(dt: Date) {
         return new Date(dt.getFullYear(), dt.getMonth() + 1, 0, 23, 59, 59)
     }
+
+    static ddmm = {
+        formatar(dt: Date): string {
+            return dt?.toLocaleDateString?.(
+                DateFormatted._lingua, {
+                    day: '2-digit',
+                    month: 'short',
+                } as Intl.DateTimeFormatOptions
+            )
+        }
+    }
 }

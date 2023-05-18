@@ -3,11 +3,14 @@ import Transaction, { emptyTransaction } from "@/logic/core/finances/Transaction
 import AutenticacaoContext from "@/data/contexts/AutenticacaoContext";
 import servicos from "@/logic/core";
 
+export type TipoExibicao = "lista" | "grade"
+
 export default function useTransactions() {
     const { usuario } = useContext(AutenticacaoContext)
     const [data, setData] = useState<Date>(new Date())
+    const [tipoExibicao, setTipoExibicao] = useState<TipoExibicao>("lista")
     const [transactions, setTransactions] = useState<Transaction[]>([])
-    const [transaction, setTransaction] = useState<Transaction | null>(null) 
+    const [transaction, setTransaction] = useState<Transaction | null>(null)
 
     useEffect (() => {
         searchTransactions()
@@ -37,9 +40,11 @@ export default function useTransactions() {
         data,
         transactions,
         transaction,
+        tipoExibicao,
         saveTransaction,
         deleteTransaction,
         select: setTransaction,
-        alterarData: setData
+        alterarData: setData,
+        alterarExibicao: setTipoExibicao
     }
 }
